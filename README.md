@@ -2,6 +2,7 @@
 
 現時点ではマルコフ連鎖を用いての実装を考えている。
 
+## 学習データを取得してくる
 とりあえず、曲のデータ一一覧を取得してきて、　csvファイルに落とすとこまで実装する。
 
 ## 参考になりそうな文献
@@ -14,3 +15,12 @@ https://gukoulog.com/2018/10/17/python-5/
 http://cedro3.com/ai/markov/
 https://qiita.com/hsoccer/items/760a2f871c3b3bad1c46
 \https://www.pc-koubou.jp/magazine/4238
+
+- RNNを使ってYouTubeで再生数を稼げる動画タイトルを自動生成してみた
+https://qiita.com/JuntoNozaki/items/1eddcd35e20b72c55842
+
+- LINEスタンプをDeepLearningで自動生成してみる【Part 1】
+https://qiita.com/enmaru/items/08b8b04d9b94307abb79
+
+- 自動文章生成AI（LSTM）に架空の歴史を作成させた方法とアルゴリズム
+https://spjai.com/ai-history/
