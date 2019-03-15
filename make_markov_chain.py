@@ -8,7 +8,15 @@ from janome.tokenizer import Tokenizer
 
 t = Tokenizer()
 
+# Janomeを使用してテキストデータを単語に分割する
+def wakati(text):
+    text = text.replace('\n', '')  # 改行を削除
+    text = text.replace('\u3000', '')  # 全角の空白を削除
+    t = Tokenizer()
+    result = t.tokenize(text, wakati=True)
+    return result
+
 # ファイルの読み込み
 with open('./music_title_list_from_karatetsu.csv') as f:
-    for token in t.tokenize(f.read()):
-        print(token)
+    print(wakati(f.read()))
+
