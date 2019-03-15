@@ -20,5 +20,36 @@ def wakati(text):
 
 # ファイルの読み込み
 with open('./music_title_list_from_karatetsu.csv') as f:
-    print(wakati(f.read()))
+    # print(wakati(f.read()))
+    # マルコフ連鎖用辞書作成
+    markov = defaultdict(str)  # 辞書初期化
+    w1, w2 = "", ""
+    for word in wakati(f.read()): # それぞれの単語
+        # print(word)
+        # print('w1 && W2')
+        if w1 and w2: # どちらも空じゃない 
+            if not (w1 == '\n'): #改行から続くのは次の曲タイトル
+                if (w1, w2) not in markov:
+                    # print(w1, w2)
+                    markov[(w1, w2)] = []  # 登録して
+                markov[(w1, w2)].append(word)  # 2単語の次の単語を追加する
+        w1, w2 = w2, word
 
+    #文章の自動生成
+    count_n = 0  # いくつ曲のタイトルを生成させるか
+    num_sentence = 10
+    sentence = ""
+    w1, w2 = random.choice(list(markov.keys()))
+    while count_n < num_sentence:
+        if (w1, w2) in markov: # そのキーの組み合わせがあったら
+            tmp = random.choice(markov[(w1, w2)])
+            # 2単語に続く候補の中からランダムに選択する
+            # print(tmp)
+            sentence += tmp
+            if(tmp == '\n'):
+                count_n += 1
+            w1, w2 = w2, tmp
+        else: # キーが存在しない場合
+            w1, w2 = random.choice(list(markov.keys()))
+
+    print(sentence)
