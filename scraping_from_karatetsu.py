@@ -18,5 +18,3 @@ with open('music_title_list_from_karatetsu.csv', 'w') as f:
         # 曲についている不要な括弧をそれごと削除 ex. (TV ver)
         only_music_title = re.sub(r'（.+?）', '', title.text)
         writer.writerow([only_music_title])
-
-# print(soup)
