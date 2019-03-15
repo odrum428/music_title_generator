@@ -12,7 +12,7 @@ response.encoding = response.apparent_encoding
 
 soup = BeautifulSoup(response.text, "lxml")
 
-with open('music_title_list_from_karatetsu.csv', 'w') as f:
+with open('music_title_list_from_karatetsu.csv', 'w', newline='') as f:
     for title in soup.find_all("a", class_="pclink", target="_blank"):
         writer = csv.writer(f)
         # 曲についている不要な括弧をそれごと削除 ex. (TV ver)
