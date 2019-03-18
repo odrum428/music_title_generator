@@ -18,8 +18,9 @@ def wakati(text):
     result = t.tokenize(text, wakati=True)
     return result
 
+
 # ファイルの読み込み
-with open('./music_title_list_from_karatetsu.csv') as f:
+with open('./music_title_list_from_karatetsu.csv', "r",  encoding="shift-jis") as f:
     # print(wakati(f.read()))
     # マルコフ連鎖用辞書作成
     markov = defaultdict(str)  # 辞書初期化
@@ -27,7 +28,7 @@ with open('./music_title_list_from_karatetsu.csv') as f:
     for word in wakati(f.read()): # それぞれの単語
         # print(word)
         # print('w1 && W2')
-        if w1 and w2: # どちらも空じゃない 
+        if w1 and w2: # どちらも空じゃない
             if not (w1 == '\n'): #改行から続くのは次の曲タイトル
                 if (w1, w2) not in markov:
                     # print(w1, w2)
